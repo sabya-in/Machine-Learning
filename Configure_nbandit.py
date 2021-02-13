@@ -1,4 +1,4 @@
-from Bandit import bandit
+from Bandit_nbandit import bandit
 
 class setup:
     def __init__():
