@@ -16,8 +16,8 @@ epsilon = Exploration probability between 0-1;
 R = Inital reward for faster and better reward searches;
 
 # Instructions to run
-  1. Files postfixed with _exp are for checking transition between different decision trees / banndits (slots)
-  2. Files postfixed with _nbandit is just nbandit implementation and shows how the Q_max and percent of optimum actions selected saturates
+  1. Files postfixed with _exp are part of nbandit code for checking transition between different decision trees / banndits (slots)
+  2. Files postfixed with _nbandit are part of nbandit code and shows how the Q_max and percent of optimum actions selected saturates
   3. The Main_exp and Main_nbandit are launcher files
   4. Once you launch you need to provide E,epsilon,R
   5. Next seed bell curve for each slot machine or bandit in our n-bandit problem
