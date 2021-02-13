@@ -1,5 +1,5 @@
-from Configure import setup
-from Analytics import analysis
+from Configure_nbandit import setup
+from Analytics_nbandit import analysis
 
 def get_q_max(Q_val,epsilon=0):
     from numpy.random import choice
