@@ -16,10 +16,22 @@ epsilon = Exploration probability between 0-1;
 R = Inital reward for faster and better reward searches;
 
 # Instructions to run
-  1. Files postfixed with _exp are part of nbandit code for checking transition between different decision trees / banndits (slots)
-  2. Files postfixed with _nbandit are part of nbandit code and shows how the Q_max and percent of optimum actions selected saturates
+  1. Files postfixed with _exp (experiment folder) are part of nbandit code for checking transition between different decision trees / banndits (slots)
+  2. Files postfixed with _nbandit (core folder) are part of nbandit code and shows how the Q_max and percent of optimum actions selected saturates
   3. The Main_exp and Main_nbandit are launcher files
   4. Once you launch you need to provide E,epsilon,R
   5. Next seed bell curve for each slot machine or bandit in our n-bandit problem
+
+# Core
+  In this algorithm we calculate Qvalue deterministically for each iteration which ideally isnt the case in real world. 
+  This model is very deterministic and hence the curve chooses the winner slot / optimum slot using the optimum policy very fast and remains saturated.
+  The probablity of choosing another slot decereases after the first 100 iteration as we have clear winner.
+  
+# Experiment
+  In this we choose only those Qvalue where we expect optimum reward.
+  we dont calculate Qvalue for each slot in each step for particular bandit only when we choose it as Action according to optimum policy.
+  The variance of the graph is very smooth and almost always we choose the proper Action , ( which also many a times gives us the cumulative reward not always)
+  If we have two bell curves _(Mu=4,sd=0.5) , (Mu=4,sd=2.8)_ the obvious smart choice is to choose (1) instead of (2) for a stable reward, 
+  but if we are looking for wildly optimistic results we can choose (2) , this is evidient from the fact that setting greater value of _E_ leads to choose (2) which may in short term give wildly high jumps.   
 
 # UCB implementation can make this implementation much better
