@@ -28,9 +28,9 @@ R = Inital reward for faster and better reward searches;
   The probablity of choosing another slot decereases after the first 100 iteration as we have clear winner.
   
 # Experiment
-  In this we choose only those Qvalue where we expect optimum reward.
-  we dont calculate Qvalue for each slot in each step for particular bandit only when we choose it as Action according to optimum policy.
-  The variance of the graph is very smooth and almost always we choose the proper Action , ( which also many a times gives us the cumulative reward not always)
+  In this we choose only those Qvalue where we expect optimum reward we dont calculate Qvalue for each slot in each step.
+  For a particular bandit we choose Qvalue only when we choose it as Action according to optimum policy.
+  The variance of the graph is very good and almost always we choose the proper Action , ( which also many a times gives us the cumulative reward not always)
   If we have two bell curves _(Mu=4,sd=0.5) , (Mu=4,sd=2.8)_ the obvious smart choice is to choose (1) instead of (2) for a stable reward, 
   but if we are looking for wildly optimistic results we can choose (2) , this is evidient from the fact that setting greater value of _E_ leads to choose (2) which may in short term give wildly high jumps.   
 
