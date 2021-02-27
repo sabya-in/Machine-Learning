@@ -1,6 +1,6 @@
 """
 Solving Gambler's problem using Value-Itertion.
-Author : Sabyasachi Mondal (sachi.iiest@gmail.com)
+Author : Sabyasachi Mondal (basyahisacmondal@gmail.com)
 """
 
 from matplotlib import pyplot as plt
@@ -12,12 +12,16 @@ prob = (0.5,0.5)
 gamma = 0.9
 state_n = []
 v = []
+reward_win = 1
+reward_lose = 0
 
 print("A Gambler decides to bet money between 1-99$ . If the Gamber stakes a$ and wins then he gets 2a$ otherwise he loses his stake.")
 print("Given he wins the bet once a total of 100$ is won how should he place his bets.")
-p = float(input("Enter probability of winning a bet 0-1 float"))
+print("-----------------------------------------------------------------------------------------")
+p = float(input("Enter probability of winning a bet 0-1 float "))
 prob = (1.0-p,p)
-gamma = float(input("Enter reward discount 0-1 float"))
+gamma = float(input("Enter reward discount 0-1 float "))
+(reward_win,reward_lose) = (float(input("Enter reward when you reach 100$ ")),float(input("Enter reward when you lose ")))
 
 def get_policy(v):
     policy = []
@@ -26,7 +30,7 @@ def get_policy(v):
         for a in range(len(action[s])):
             sum = 0
             for s_index in range(len(state_n[s][a])):
-                (r,s_) = (1,100) if(state_n[s][a][s_index]>=100) else (0,state_n[s][a][s_index])
+                (r,s_) = (reward_win,100) if(state_n[s][a][s_index]>=100) else (reward_lose,state_n[s][a][s_index])
                 sum+=prob[s_index]*(r+gamma*v[s_])
             q.extend([sum])
         policy.extend([action[s][q.index(max(q))]])
@@ -57,7 +61,7 @@ def val_iteration():
             for a in range(len(action[s])):
                 sum = 0
                 for s_index in range(len(state_n[s][a])):
-                    (r,s_) = (1,100) if(state_n[s][a][s_index]>=100) else (0,state_n[s][a][s_index])
+                    (r,s_) = (reward_win,100) if(state_n[s][a][s_index]>=100) else (reward_lose,state_n[s][a][s_index])
                     sum+=prob[s_index]*(r+gamma*v[s_])  
                 q.extend([sum])
             v[s]=max(q)
